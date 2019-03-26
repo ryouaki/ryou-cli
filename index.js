@@ -25,8 +25,8 @@ program.version(`Ver: ${pkg.version}`, '-v, --version')
           message: 'Which template do you want to choice?',
           choices: [
             'Vue(SPA)',
-            'Vue(First-render)(Unused)',
-            'Vue(SSR)(Unused)'
+            'Vue(First-render)(pending...)',
+            'Vue(SSR)(pending...)'
           ]
         },
         {
