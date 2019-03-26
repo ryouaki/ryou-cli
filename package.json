@@ -4,7 +4,7 @@
   "description": "The cli for ryou front-end tools.",
   "main": "index.js",
   "bin": {
-    "kr-vue-startkit": "./index.js"
+    "ryoucli": "./index.js"
   },
   "files": [
     "index.js",
