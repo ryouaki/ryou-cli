@@ -74,8 +74,10 @@ program.version(`Ver: ${pkg.version}`, '-v, --version')
 
               console.log(symbols.success, chalk.green('The project initialized successful!'));
               npminstall.start();
-              execa.shell(`cd ${root};npm i`).then(r => {
+              execa.shellSync(`cd ${root}`);
+              execa.shell(`npm i`).then(r => {
                 npminstall.info(r.stdout);
+                console.log(symbols.success, chalk.green('Npm install successful!'));
               }).catch(error => {
                 console.log(error)
                 npminstall.fail();
