@@ -1,6 +1,6 @@
 # ryou-cli
 用于快速新建项目的工程模板生成工具，目前支持一下模板：
-Vue(SPA): Vue + Vuex + VueRouter
+- Vue(SPA): Vue + Vuex + VueRouter
 
 ## 使用
 
