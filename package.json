@@ -1,0 +1,43 @@
+{
+  "name": "ryou-cli",
+  "version": "1.0.0",
+  "description": "The cli for ryou front-end tools.",
+  "main": "index.js",
+  "bin": {
+    "kr-vue-startkit": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryouaki/ryou-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "front-end",
+    "tools"
+  ],
+  "author": "ryouaki (46517115@qq.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryouaki/ryou-cli/issues"
+  },
+  "homepage": "https://github.com/ryouaki/ryou-cli#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.19.0",
+    "download-git-repo": "^1.1.0",
+    "execa": "^1.0.0",
+    "handlebars": "^4.1.1",
+    "inquirer": "^6.2.2",
+    "log-symbols": "^2.2.0",
+    "ora": "^3.2.0"
+  }
+}
