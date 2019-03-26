@@ -25,8 +25,8 @@ program.version(`Ver: ${pkg.version}`, '-v, --version')
           message: 'Which template do you want to choice?',
           choices: [
             'Vue(SPA)',
-            'Vue(First-render)',
-            'Vue(SSR)'
+            'Vue(First-render)(Unused)',
+            'Vue(SSR)(Unused)'
           ]
         },
         {
@@ -40,7 +40,6 @@ program.version(`Ver: ${pkg.version}`, '-v, --version')
       ]).then((answers) => {
         const spinner = ora('downloading...');
         const npminstall = ora('npm installing...');
-        const runserve = ora('runserve...');
         spinner.start();
 
         let templatePath = '';
@@ -74,10 +73,15 @@ program.version(`Ver: ${pkg.version}`, '-v, --version')
 
               console.log(symbols.success, chalk.green('The project initialized successful!'));
               npminstall.start();
-              execa.shellSync(`cd ${root}`);
+              process.chdir(root);
               execa.shell(`npm i`).then(r => {
-                npminstall.info(r.stdout);
+                npminstall.succeed();
                 console.log(symbols.success, chalk.green('Npm install successful!'));
+                console.log();
+                console.log(symbols.success, chalk.green(`Run command:`));
+                console.log(symbols.success, chalk.green(`  $ cd ${root}`));
+                console.log(symbols.success, chalk.green(`  $ npm run dev`));
+                console.log();
               }).catch(error => {
                 console.log(error)
                 npminstall.fail();
