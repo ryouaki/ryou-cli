@@ -1,6 +1,15 @@
 # ryou-cli
-用于快速新建项目的工程模板生成工具，目前支持一下模板：
-- Vue(SPA): Vue + Vuex + VueRouter
+用于快速新建项目的工程模板生成工具，目前支持一下框架模板：
+- Vue(SPA): (完成)Vue + Vuex + VueRouter
+- Vue(First-render): (开发中)基于nuxt
+- Vue(SSR): (开发中)基于nuxt
+- React(SPA): (开发中)
+- React(First-render): (开发中)
+- React(SSr): (开发中)基于nest
+- Expressjs(API): (开发中)
+- KOA(API): (开发中)
+- Nginx spa hash configuration: (开发中)
+- Nginx spa history configuration: (开发中)
 
 ## 使用
 

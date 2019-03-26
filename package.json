@@ -1,6 +1,6 @@
 {
   "name": "ryou-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The cli for ryou front-end tools.",
   "main": "index.js",
   "bin": {
