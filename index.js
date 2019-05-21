@@ -12,6 +12,7 @@ const execa = require('execa');
 const download = require('download-git-repo');
 
 const pkg = require('./package.json');
+const nginxHistory = require('./scripts/nginx_history');
 
 program.version(`Ver: ${pkg.version}`, '-v, --version')
   .command('init <name>')
@@ -26,7 +27,8 @@ program.version(`Ver: ${pkg.version}`, '-v, --version')
           choices: [
             'Vue(SPA)',
             'Vue(First-render)(pending...)',
-            'Vue(SSR)(pending...)'
+            'Vue(SSR)(pending...)',
+            'Nginx configuration(History)'
           ]
         },
         {
@@ -38,12 +40,9 @@ program.version(`Ver: ${pkg.version}`, '-v, --version')
           message: 'Author:'
         }
       ]).then((answers) => {
-        const spinner = ora('downloading...');
-        const npminstall = ora('npm installing...');
-        spinner.start();
-
         let templatePath = '';
-        switch(answers.template) {
+        let needInstall = true;
+        switch (answers.template) {
           case 'Vue(SPA)':
             templatePath = 'ryouaki/ryou-fe-vue-spa-base';
             break;
@@ -51,45 +50,55 @@ program.version(`Ver: ${pkg.version}`, '-v, --version')
             break;
           case 'Vue(SSR)':
             break;
+          case 'Nginx configuration(History)':
+            nginxHistory({...answers, name});
+            needInstall = false;
+            break;
           default:
             break;
         }
 
-        download(templatePath, root, (err) => {
-          if (err) {
-            spinner.fail();
-            console.error(symbols.error, chalk.red(err));
-          } else {
-            spinner.succeed();
-            const fileName = `${root}/package.json`;
-            if (fs.existsSync(fileName)) {
-              const content = fs.readFileSync(fileName).toString();
-              const result = handlebars.compile(content)({
-                name, 
-                description: answers.description, 
-                author: answers.author
-              });
-              fs.writeFileSync(fileName, result);
+        if (needInstall) {
+          const spinner = ora('downloading...');
+          const npminstall = ora('npm installing...');
+          spinner.start();
 
-              console.log(symbols.success, chalk.green('The project initialized successful!'));
-              npminstall.start();
-              process.chdir(root);
-              execa.shell(`npm i`).then(r => {
-                npminstall.succeed();
-                console.log(symbols.success, chalk.green('Npm install successful!'));
-                console.log();
-                console.log(symbols.success, chalk.green(`Run command:`));
-                console.log(symbols.success, chalk.green(`  $ cd ${root}`));
-                console.log(symbols.success, chalk.green(`  $ npm run dev`));
-                console.log();
-              }).catch(error => {
-                console.log(error)
-                npminstall.fail();
-                console.error(symbols.error, chalk.red('The project initialized failed!'));
-              });
+          download(templatePath, root, (err) => {
+            if (err) {
+              spinner.fail();
+              console.error(symbols.error, chalk.red(err));
+            } else {
+              spinner.succeed();
+              const fileName = `${root}/package.json`;
+              if (fs.existsSync(fileName)) {
+                const content = fs.readFileSync(fileName).toString();
+                const result = handlebars.compile(content)({
+                  name,
+                  description: answers.description,
+                  author: answers.author
+                });
+                fs.writeFileSync(fileName, result);
+
+                console.log(symbols.success, chalk.green('The project initialized successful!'));
+                npminstall.start();
+                process.chdir(root);
+                execa.shell(`npm i`).then(r => {
+                  npminstall.succeed();
+                  console.log(symbols.success, chalk.green('Npm install successful!'));
+                  console.log();
+                  console.log(symbols.success, chalk.green(`Run command:`));
+                  console.log(symbols.success, chalk.green(`  $ cd ${root}`));
+                  console.log(symbols.success, chalk.green(`  $ npm run dev`));
+                  console.log();
+                }).catch(error => {
+                  console.log(error)
+                  npminstall.fail();
+                  console.error(symbols.error, chalk.red('The project initialized failed!'));
+                });
+              }
             }
-          }
-        });
+          });
+        }
       })
     } else {
       console.log(symbols.error, chalk.red('Project already exists!'));
