@@ -8,8 +8,7 @@
 - React(SSr): (开发中)基于nest
 - Expressjs(API): (开发中)
 - KOA(API): (开发中)
-- Nginx spa hash configuration: (开发中)
-- Nginx spa history configuration: (开发中)
+- Nginx spa history configuration: (完成)
 
 ## 使用
 
