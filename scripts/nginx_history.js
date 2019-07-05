@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const handlebars = require('handlebars');
+const path = require('path');
 const fs = require('fs');
 
 handlebars.registerHelper('list', function(items, options) {
@@ -16,11 +17,11 @@ function doAddServiceApi(opts) {
     inquirer.prompt([
       {
         name: 'prefix',
-        message: 'Which prefix do you want(EX. https://xxx.xxx.xxx.xxx:port/{prefix}/{path})?'
+        message: 'Which prefix do you want(EX. https://xxx.xxx.xxx.xxx:port/{{prefix}}/path)?'
       },
       {
         name: 'host',
-        message: 'Server address like https://xxx.xxx.xxx.xxx:port/{prefix}?'
+        message: 'Server address like https://xxx.xxx.xxx.xxx:port?'
       },
       {
         name: 'shouldCross',
@@ -40,7 +41,8 @@ function doAddServiceApi(opts) {
       doAddServiceApi(opts);
     })
   } else {
-    const temp = fs.readFileSync('./templates/nginx.temp').toString('UTF8');
+    console.log(__dirname)
+    const temp = fs.readFileSync(path.join(__dirname, '..', './templates/nginx.temp')).toString('UTF8');
     const result = handlebars.compile(temp)(opts);
     fs.writeFileSync(`${process.cwd()}/${opts.name}.conf`, result);
 
