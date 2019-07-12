@@ -1,28 +1,28 @@
 # ryou-cli
-用于快速新建项目的工程模板生成工具，目前支持一下框架模板：
-- Vue(SPA): (完成)Vue + Vuex + VueRouter
-- Vue(First-render): (开发中)基于nuxt
-- Vue(SSR): (开发中)基于nuxt
-- React(SPA): (开发中)
-- React(First-render): (开发中)
-- React(SSr): (开发中)基于nest
-- Expressjs(API): (开发中)
-- KOA(API): (开发中)
-- Nginx spa history configuration: (完成)
+Used for developer start new project with template like below：
+- Vue(SPA): (Done)Vue + Vuex + VueRouter
+- Vue(First-render): (Pending)基于nuxt
+- Vue(SSR): (Pending)基于nuxt
+- React(SPA): (Pending)
+- React(First-render): (Pending)
+- React(SSr): (Pending)基于nest
+- Expressjs(API): (Pending)
+- KOA(API): (Pending)
+- Nginx spa history configuration: (Done)
 
-## 使用
+## Use
 
-安装：
+Install：
 ```sh
   npm install -g ryou-cli
 ```
 
-构建项目：
+Run：
 ```sh
-  ryoucli init <项目名称>
+  ryoucli init <ProjectName>
 ```
 
-按提示输入信息：
+Demo：
 ```sh
   ? Which template do you want to choice? Vue(SPA)
   ? Description: Test project
