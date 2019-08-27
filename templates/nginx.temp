@@ -3,7 +3,7 @@
 # Description: 
 #   {{description}}
 
-{
+server {
   listen  {{port}};
   server_name  {{serverName}};
 
