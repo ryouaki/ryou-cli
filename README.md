@@ -5,7 +5,7 @@ Used for developer start new project with template like below：
 - Vue(SSR): (Pending)基于nuxt
 - React(SPA): (Pending)
 - React(First-render): (Pending)
-- React(SSr): (Pending)基于nest
+- React(SSR): (Pending)基于nextjs
 - Expressjs(API): (Done)Expressjs + ryou-router
 - KOA(API): (Pending)
 - Nginx spa history configuration: (Done)
