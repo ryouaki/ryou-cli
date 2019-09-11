@@ -28,6 +28,7 @@ program.version(`Ver: ${pkg.version}`, '-v, --version')
             'Vue(SPA)',
             'Vue(First-render)(pending...)',
             'Vue(SSR)(pending...)',
+            'Expressjs(API)',
             'Nginx configuration(History)'
           ]
         },
@@ -50,6 +51,9 @@ program.version(`Ver: ${pkg.version}`, '-v, --version')
             break;
           case 'Vue(SSR)':
             break;
+          case 'Expressjs(API)':
+              templatePath = 'ryouaki/ryou-restful-express-base';
+              break;
           case 'Nginx configuration(History)':
             nginxHistory({...answers, name});
             needInstall = false;
