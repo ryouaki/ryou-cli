@@ -1,3 +1,7 @@
+
+[![npm downloads](https://img.shields.io/npm/dm/ryou-cli.svg?style=flat-square)](http://npm-stat.com/charts.html?package=ryou-cli)
+[![gitter chat](https://img.shields.io/gitter/room/mzabriskie/ryou-cli.svg?style=flat-square)](https://gitter.im/mzabriskie/ryou-cli)
+
 # ryou-cli
 Used for developer start new project with template like below：
 - Vue(SPA): (Done)Vue + Vuex + VueRouter
